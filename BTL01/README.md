@@ -106,10 +106,9 @@ with torch.no_grad():
 
 | Họ và tên | MSSV | Nhiệm vụ | Đóng góp |
 |---|---|---|---|
-| Nguyễn Văn A (nhóm trưởng) | 2xxxxxxx | Thiết kế thực nghiệm, train/experiments, tổng hợp báo cáo | 25% |
-| Trần Thị B | 2xxxxxxx | Sinh và khảo sát dữ liệu, mục 2 báo cáo | 25% |
-| Lê Văn C | 2xxxxxxx | Mô hình MLP, nhóm B và C | 25% |
-| Phạm Thị D | 2xxxxxxx | Nhóm A, đánh giá cuối, slide và demo | 25% |
+| Nguyễn Quốc Kỳ (nhóm trưởng) | 3123580037 | Thiết kế thực nghiệm, train/experiments, tổng hợp báo cáo, slide và demo | 100% |
+| Nguyễn Hiếu Ngân| 2xxxxxxx | Sinh và khảo sát dữ liệu, mục 2 báo cáo, đánh giá cuối | 100% |
+| Nguyễn Đức Quang | 2xxxxxxx | Mô hình MLP, Nhóm A, nhóm B và C | 100% |
 | **Tổng** | | | **100%** |
 
 ## Tài liệu nhóm
