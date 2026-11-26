@@ -1,0 +1,42 @@
+# Cấu hình chung cho mọi thí nghiệm. KHÔNG sửa sau khi bắt đầu tuần 2 (quy tắc 4).
+image_size: 352            # cố định; không bao giờ giảm (mục 9.4 tài liệu lý thuyết)
+batch_size: 16
+num_workers: 2
+max_epochs: 100
+patience: 15               # dừng sớm theo Dice trên kvasir_val
+warmup_epochs: 3
+weight_decay: 1.0e-4
+grad_clip: 1.0
+amp: true
+threshold: 0.5
+lr_grid: [5.0e-5, 2.0e-4, 8.0e-4]
+lr_search_seed: 42
+seeds: [42, 123, 2024]
+extra_seeds: {E3: [7, 31415], E5: [7, 31415]}   # chỉ chạy nếu đủ GPU, đã khai báo trước
+
+split:
+  seed: 20240601           # độc lập với seed huấn luyện
+  ratios: [0.8, 0.1, 0.1]
+
+hashing:
+  size: 8                  # dHash/pHash 64 bit
+  center_crop: 0.6         # chỉ băm 60% trung tâm: bỏ viền, ô đen, chữ chèn của ảnh nội soi
+  tau: 8                   # chọn bằng kiểm tra trực quan trên Kvasir-SEG (băm vùng trung tâm); hiệu chỉnh lại bằng --calibrate khi có ClinicDB
+  tau_sensitivity: 11      # bắt thêm cặp trùng khác độ phóng (d=11); >=12 bắt đầu nối nhầm
+
+e9:
+  folds: 5
+  epochs: 60
+  seed: 42
+  lr_from: E3
+
+stats:
+  bootstrap: 10000
+  permutations: 20000
+  exact_max_clusters: 15
+  alpha: 0.05
+
+metrics:
+  polyp_iou_threshold: 0.5
+  size_bins: [0.01, 0.05]  # nhỏ < 1%, vừa 1-5%, lớn > 5% diện tích ảnh
+  negative_fp_area: 0.001  # khung âm tính bị tính báo động giả nếu dự đoán > 0,1% ảnh

@@ -1,0 +1,44 @@
+# Định nghĩa E1-E9 (mục 6.2 tài liệu lý thuyết).
+# arch: Unet | FPN | DeepLabV3Plus (segmentation_models_pytorch)
+# appearance: none | jitter | lab_exchange | fda | randconv
+experiments:
+  E1: {arch: Unet,          encoder: resnet34, pretrained: true,  appearance: none,         role: "RQ1"}
+  E2: {arch: FPN,           encoder: mit_b2,   pretrained: false, appearance: none,         role: "RQ2"}
+  E3: {arch: FPN,           encoder: mit_b2,   pretrained: true,  appearance: none,         role: "tham chiếu"}
+  E4: {arch: FPN,           encoder: mit_b2,   pretrained: true,  appearance: jitter,       role: "RQ3 đối chứng"}
+  E5: {arch: FPN,           encoder: mit_b2,   pretrained: true,  appearance: lab_exchange, role: "RQ3 H3b"}
+  E6: {arch: FPN,           encoder: mit_b2,   pretrained: true,  appearance: fda,          role: "DG cơ sở"}
+  E7: {arch: FPN,           encoder: mit_b2,   pretrained: true,  appearance: randconv,     role: "DG cơ sở"}
+  E8: {arch: DeepLabV3Plus, encoder: resnet50, pretrained: true,  appearance: none,         role: "RQ1"}
+  E9: {arch: FPN,           encoder: mit_b2,   pretrained: true,  appearance: none,         role: "rò rỉ"}
+  # Thử nghiệm CPU (mục "Thí nghiệm thử"): MiT-B0 nhẹ hơn; không thuộc năm so sánh khai báo trước
+  P2: {arch: FPN,           encoder: mit_b0,   pretrained: false, appearance: none,         role: "thử nghiệm, khởi tạo ngẫu nhiên"}
+  P3: {arch: FPN,           encoder: mit_b0,   pretrained: true,  appearance: none,         role: "thử nghiệm, ImageNet"}
+  P1: {arch: Unet,          encoder: timm-regnetx_008, pretrained: true, appearance: none,   role: "thu nhỏ của E1: CNN U-Net"}
+  P4: {arch: FPN,           encoder: mit_b0,   pretrained: true,  appearance: jitter,       role: "thu nhỏ của E4: rung màu"}
+  P5: {arch: FPN,           encoder: mit_b0,   pretrained: true,  appearance: lab_exchange, role: "thử nghiệm, ImageNet + trao đổi Lab"}
+  P6: {arch: FPN,           encoder: mit_b0,   pretrained: true,  appearance: fda,          role: "thu nhỏ của E6: FDA"}
+  P7: {arch: FPN,           encoder: mit_b0,   pretrained: true,  appearance: randconv,     role: "thu nhỏ của E7: RandConv"}
+  P8: {arch: DeepLabV3Plus, encoder: timm-regnetx_008, pretrained: true, appearance: none,   role: "thu nhỏ của E8: CNN DeepLabV3+"}
+  P9: {arch: FPN,           encoder: mit_b0,   pretrained: true,  appearance: none,         role: "thu nhỏ của E9: rò rỉ trên ClinicDB"}
+
+appearance_params:
+  jitter: {brightness: 0.2, contrast: 0.2, saturation: 0.2, hue: 0.05, p: 0.8}
+  lab_exchange: {p: 0.5, mean_scale: [0.9, 1.1], std_scale: [0.8, 1.2]}
+  fda: {p: 0.5, beta: [0.01, 0.05]}
+  randconv: {p: 0.5, kernel_sizes: [1, 3, 5, 7]}
+
+# Năm so sánh khai báo trước (Holm trong mỗi tập). Hiệu = A - B.
+planned:
+  - {id: C1, rq: RQ1, a: E3, b: E1}
+  - {id: C2, rq: RQ1, a: E3, b: E8}
+  - {id: C3, rq: RQ2, a: E3, b: E2}
+  - {id: C4, rq: RQ3, a: E5, b: E3}
+  - {id: C5, rq: RQ3, a: E5, b: E4}
+
+# So sánh mô tả: không hiệu chỉnh, không dùng để kết luận.
+secondary:
+  - {id: S1, a: E6, b: E3}
+  - {id: S2, a: E7, b: E3}
+  - {id: S3, a: E5, b: E6}
+  - {id: S4, a: E5, b: E7}

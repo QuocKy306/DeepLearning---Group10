@@ -1,0 +1,31 @@
+# Đường dẫn tương đối tính từ thư mục làm việc (mặc định: gốc kho mã; đổi bằng biến POLYP_WORKDIR).
+# Ảnh và mặt nạ phải cùng tên gốc; phần mở rộng có thể khác.
+# clusters_csv (tùy chọn): bảng cụm chính thức, cột id,cluster. Không có thì cụm được tái dựng bằng băm ảnh.
+datasets:
+  kvasir:
+    images: data/raw/Kvasir-SEG/images
+    masks: data/raw/Kvasir-SEG/masks
+    role: source
+    unit: cụm ảnh gần trùng
+  clinicdb:
+    images: data/raw/CVC-ClinicDB/Original
+    masks: data/raw/CVC-ClinicDB/Ground Truth
+    role: external
+    unit: chuỗi video
+    version: "612 khung, 29 chuỗi"
+  colondb:
+    images: data/raw/CVC-ColonDB/images
+    masks: data/raw/CVC-ColonDB/masks
+    role: external
+    unit: cụm tái dựng
+    version: "GHI RÕ: 300 hay 380 ảnh"
+  etis:
+    images: data/raw/ETIS-LaribPolypDB/images
+    masks: data/raw/ETIS-LaribPolypDB/masks
+    role: external
+    unit: cụm tái dựng
+  negatives:   # tùy chọn: khung không polyp (HyperKvasir/PolypGen); không có mặt nạ
+    images: data/raw/negatives
+    masks: null
+    role: negatives
+    unit: cụm tái dựng
