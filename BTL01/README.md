@@ -106,9 +106,9 @@ with torch.no_grad():
 
 | Họ và tên | MSSV | Nhiệm vụ | Đóng góp |
 |---|---|---|---|
-| Nguyễn Quốc Kỳ (nhóm trưởng) | 3123580037 | Thiết kế thực nghiệm, train/experiments, tổng hợp báo cáo, slide và demo | 100% |
-| Nguyễn Hiếu Ngân| 2xxxxxxx | Sinh và khảo sát dữ liệu, mục 2 báo cáo, đánh giá cuối | 100% |
-| Nguyễn Đức Quang | 2xxxxxxx | Mô hình MLP, Nhóm A, nhóm B và C | 100% |
+| Nguyễn Quốc Kỳ (nhóm trưởng) | 3123580020 | Thiết kế thực nghiệm, train/experiments, tổng hợp báo cáo, slide và demo | 100% |
+| Nguyễn Hiếu Ngân| 3123580027 | Sinh và khảo sát dữ liệu, mục 2 báo cáo, đánh giá cuối | 100% |
+| Nguyễn Đức Quang | 3123580037 | Mô hình MLP, Nhóm A, nhóm B và C | 100% |
 | **Tổng** | | | **100%** |
 
 ## Tài liệu nhóm
